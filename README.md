@@ -1,6 +1,7 @@
-##Personal fork of the *jrnl* code
 
-####What is this fork?
+## Personal fork of the *jrnl* code
+
+#### What is this fork?
 
 This is my personal fork of the simple, effective *jrnl* code. Why fork it? Because I wanted to be able to upload my daily journal to Google Drive when I was done writing in it. 
 
