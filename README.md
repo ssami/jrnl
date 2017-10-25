@@ -1,3 +1,28 @@
+##Personal fork of the *jrnl* code
+
+####What is this fork?
+
+This is my personal fork of the simple, effective *jrnl* code. Why fork it? Because I wanted to be able to upload my daily journal to Google Drive when I was done writing in it. 
+
+This implementation is far from usable for anyone other than me. For one, you'd need the Google Drive API certificate linked to your account. 
+
+When I install this fork of *jrnl*, I do: 
+
+```
+python setup.py install
+```
+in my virtual environment. 
+
+When I am done writing my journal, I do: 
+```
+jrnl <journal name> --export <export format> -o <file name to export to> -upload
+```
+In PyCharm CE, I test this as:
+```
+python -m jrnl.cli <journal name> --export <export format> -o <file name to export to> -upload
+``` 
+
+
 jrnl [![Build Status](http://img.shields.io/travis/maebert/jrnl.svg?style=flat)](https://travis-ci.org/maebert/jrnl)  [![Downloads](http://img.shields.io/pypi/dm/jrnl.svg?style=flat)](https://pypi.python.org/pypi/jrnl/) [![Version](http://img.shields.io/pypi/v/jrnl.svg?style=flat)](https://pypi.python.org/pypi/jrnl/)
 ====
 
@@ -8,6 +33,7 @@ _For news on updates or to get help, [read the docs](http://maebert.github.io/jr
 *jrnl* also plays nice with the fabulous [DayOne](http://dayoneapp.com/) and can read and write directly from and to DayOne Journals.
 
 Optionally, your journal can be encrypted using the [256-bit AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard).
+
 
 ### Why keep a journal?
 
