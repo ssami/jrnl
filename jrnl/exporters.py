@@ -6,6 +6,14 @@ import os
 import json
 from .util import u, slugify
 import codecs
+from jrnl.GoogleDriveUploader import Uploader
+
+
+def upload_gdrive(journal, jrnl_filename):
+    ul = Uploader()
+    ul.upload(journal.name, jrnl_filename)
+    return "Journal exported as '{0}' and uploaded to Google Drive as '{1}': "\
+        .format(jrnl_filename, journal.name)
 
 
 def get_tags_count(journal):
@@ -66,7 +74,7 @@ def to_txt(journal):
     return journal.pprint()
 
 
-def export(journal, format, output=None):
+def export(journal, format, output=None, upload=False):
     """Exports the journal to various formats.
     format should be one of json, txt, text, md, markdown.
     If output is None, returns a unicode representation of the output.
@@ -90,9 +98,15 @@ def export(journal, format, output=None):
             try:
                 with codecs.open(output, "w", "utf-8") as f:
                     f.write(content)
+                if upload:
+                    try:
+                        return upload_gdrive(journal, output)
+                    except Exception as e:
+                        return "[UPLOAD ERROR: {0} {1}]".format(output, str(e))
                 return "[Journal exported to {0}]".format(output)
             except IOError as e:
                 return "[ERROR: {0} {1}]".format(e.filename, e.strerror)
+
         else:
             return content
 
